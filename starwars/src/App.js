@@ -3,9 +3,19 @@ import {
   Card,
   CardBody,
   CardTitle,
-  Button
+  CardSubtitle,
+  CardText
 } from 'reactstrap'
 import './App.css';
+
+function upper(str) {
+  return str.split(' ')
+    .map((word, i) => {
+      return typeof word.charAt(0) === 'number'
+	? word
+	: word.charAt(0).toUpperCase() + word.slice(1)
+    }).join(' ')
+}
 
 class App extends Component {
   constructor() {
@@ -13,6 +23,7 @@ class App extends Component {
     this.state = {
       starwarsChars: []
     };
+    console.log(upper('1000 sandwiches'))
   }
   componentDidMount() {
     // feel free to research what this code is doing.
@@ -31,7 +42,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div className="App container">
         <h1 className="Header">React Wars</h1>
 	{this.state.starwarsChars.map((char, i) => {
 	  return (
@@ -39,6 +50,16 @@ class App extends Component {
 	      <Card>
 		<CardBody>
 		  <CardTitle>{char.name}</CardTitle>
+		  <CardSubtitle>
+		  </CardSubtitle>
+		  <CardText>
+		    <span className="char-prop">Gender</span>: {upper(char.gender)}<br/>
+		    <span className="char-prop">Hair Color</span>: {upper(char.hair_color)} <br/>
+		    <span className="char-prop">Height</span>: {upper(char.height)} inches <br/>
+		    <span className="char-prop">Weight</span>: {upper(char.mass)} <br/>
+		    <span className="char-prop">Skin color</span>: {upper(char.skin_color)} <br/>
+		    <span className="char-prop">Eye color</span>: {upper(char.eye_color)} <br/>
+		  </CardText>
 		</CardBody>
 	      </Card>
 	    </div>
