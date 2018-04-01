@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import {
+  Card,
+  CardBody,
+  CardTitle,
+  Button
+} from 'reactstrap'
 import './App.css';
 
 class App extends Component {
@@ -27,6 +33,17 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className="Header">React Wars</h1>
+	{this.state.starwarsChars.map((char, i) => {
+	  return (
+	    <div className="char-wrapper" key={i}>
+	      <Card>
+		<CardBody>
+		  <CardTitle>{char.name}</CardTitle>
+		</CardBody>
+	      </Card>
+	    </div>
+	  )
+	})}
       </div>
     );
   }
